@@ -15,7 +15,7 @@ ctcp=$()
 ulog=$(users | wc -w)
 ip=$(hostname -I)
 mac=$(ip link show | awk '$1 == "link/ether" {print $2}')
-cmds=$(sudo journalctl _COMM=sudo | grep COMMAND | wc -l)
+cmds=$(journalctl _COMM=sudo | grep COMMAND | wc -l)
 echo "Broadcast message"
 echo
 echo "	#Architecture: $arc"
