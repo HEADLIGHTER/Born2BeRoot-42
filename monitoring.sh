@@ -8,9 +8,9 @@ pram=$(free | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}')
 fdisk=$(df -H /home/ --output=avail | grep "[0-9]")
 udisk=$(df -m /home/ --output=used | grep "[0-9]")
 pdisk=$(df /home/ --output=pcent | grep "[0-9]")
-cpul=$()
+cpul=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
 lb=$(who -b | awk '$1 == "system" {print $3 " " $4}')
-lvmt=$(lvm pvdisplay | wc -l)
+lvmt=$(lsblk | grep "lvm" |wc -l)
 lvmu=$(echo "yes")
 if [ $lvmt -eq 0 ]
 then
