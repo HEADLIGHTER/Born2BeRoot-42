@@ -10,8 +10,14 @@ udisk=$(df -m /home/ --output=used | grep "[0-9]")
 pdisk=$(df /home/ --output=pcent | grep "[0-9]")
 cpul=$()
 lb=$(who -b | awk '$1 == "system" {print $3 " " $4}')
-lvmu=$()
-ctcp=$()
+lvmt=$(lvm pvdisplay | wc -l)
+lvmu=$(echo "yes")
+if [ $lvmt -eq 0 ]
+then
+  $lvmu=$(echo "no")
+fi
+#You need to install net tools for the next step [$ sudo apt install net-tools]
+ctcp=$(cat /proc/net/sockstat{,6} | awk '$1 == "TCP:" {print $3}')
 ulog=$(users | wc -w)
 ip=$(hostname -I)
 mac=$(ip link show | awk '$1 == "link/ether" {print $2}')
