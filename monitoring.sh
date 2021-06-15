@@ -11,11 +11,7 @@ pdisk=$(df /home/ --output=pcent | grep "[0-9]")
 cpul=$(top -bn1 | grep '^%Cpu' | cut -c 10- | xargs | awk '{printf("%.1f%%", $1 + $3)}')
 lb=$(who -b | awk '$1 == "system" {print $3 " " $4}')
 lvmt=$(lsblk | grep "lvm" |wc -l)
-lvmu=$(echo "yes")
-if [ $lvmt -eq 0 ]
-then
-  $lvmu=$(echo "no")
-fi
+lvmu=$(if [ $lvmt -eq 0 ]; then echo no; else echo yes; fi)
 #You need to install net tools for the next step [$ sudo apt install net-tools]
 ctcp=$(cat /proc/net/sockstat{,6} | awk '$1 == "TCP:" {print $3}')
 ulog=$(users | wc -w)
