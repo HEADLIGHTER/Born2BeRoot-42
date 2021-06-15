@@ -2,6 +2,7 @@
 # Born2BeRoot 42/21
 
 # !!monitoring.sh script WIP!!
+What's working? Almost everyting except LVM check. I'll fix it ASAP.
 
 # Please, DO NOT copie + paste this thing with emptiness in your eyes and blank in your head!
 It's highly recommended to know what u use and how&why it works. At least, it will be usefull for YOURS and ONLY YOURS defense.
