@@ -4,7 +4,7 @@
 Developed for Debian so i'm not sure that it will run properly on CentOS distrubutive. Anyway, PM me on Discord if its working on CentOS or you have a suggestion/issues: MMBHWR#0793
 
 # monitoring.sh script wip
-Known issues: 1) For some reason script display system information twice when you execute it with [$ ./monitoring.sh. Still] but everything works pretty well while running by cron. I'll try to find a solution for this.
+Known issues: 1) For some reason script display system information twice when you execute it with [$ ./monitoring.sh] but everything works pretty well while running by cron. I'll try to find a solution for this.
 
 # Please, DO NOT copie + paste this thing with emptiness in your eyes and blank in your head!
 It's highly recommended to know what u use and how&why it works even if i leaved an explanation in commentary. At least, it will be usefull for YOURS and ONLY YOURS defense. Google&man all the commands listed here and read about it's options/parameters/etc. Be intellegent, be adaptive, be SMART. Know the tool you use.
