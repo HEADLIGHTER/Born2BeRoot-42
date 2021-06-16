@@ -19,7 +19,7 @@ script file only from root (and it won't show the number of executed sudo comman
 if you running script as user).
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # How to use
-First off [$ sudo crontab -e]. Set nano/vi as your text redactor for cron and add next lines in your crontab file:
+First off [$ sudo crontab -e] (yep, you need sudo to make cron runnig script as root.[$ crontab-e] will open another file that will run your script as user). Set nano/vi as your text editor for cron and add next lines in your crontab file:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 @reboot /path/to/file/monitoring.sh
 */10 * * * * /path/to/file/monitoring.sh
