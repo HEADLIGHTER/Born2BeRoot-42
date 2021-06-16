@@ -1,7 +1,7 @@
 
 # Born2BeRoot 42/21
 
-Developed for Debian so i'm not sure that it will run properly on CentOS distrubutive. Anyway, PM me on Discord if its working on CentOS or you have a suggestion/issues: MMBHWR#0793
+Developed for Debian so i'm not sure that it will run properly on CentOS distributive. Anyway, PM me on Discord if its working on CentOS or you have a suggestion/issues: MMBHWR#0793
 
 # monitoring.sh script wip
 Known issues: 1) For some reason script display system information twice when you execute it with [$ ./monitoring.sh] but everything works pretty well while running by cron. I'll try to find a solution for this.
