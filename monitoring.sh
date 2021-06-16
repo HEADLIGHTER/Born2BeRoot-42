@@ -17,13 +17,13 @@ ctcp=$(cat /proc/net/sockstat{,6} | awk '$1 == "TCP:" {print $3}')
 ulog=$(users | wc -w)
 ip=$(hostname -I)
 mac=$(ip link show | awk '$1 == "link/ether" {print $2}')
-cmds=$(journalctl _COMM=sudo | grep COMMAND | wc -l)
+cmds=$(journalctl _COMM=sudo | grep COMMAND | wc -l) # journalctl should be running as sudo but our script is running as root so we don't need in sudo here
 {
 echo "	#Architecture: $arc"
 echo "	#CPU physical: $pcpu"
 echo "	#vCPU: $vcpu"
 echo "	#Memory Usage: $uram/$fram"MB" ($pram%)"
-echo "	#Disk Usage: $udisk/${fdisk//[[:blank:]]/}"b" (${pdisk//[:blank:]]/})"
+echo "	#Disk Usage: $udisk/${fdisk//[[:blank:]]/}"b" (${pdisk//[[:blank:]]/})" # ${var//[[:blank:]]/} to remove tabs and spaces from variable output. Try to remove this and see how ugly is it.
 echo "	#CPU load: $cpul"
 echo "	#Last boot: $lb"
 echo "	#LVM use: $lvmu"
@@ -31,5 +31,5 @@ echo "	#Connexions TCP: $ctcp ESTABLISHED"
 echo "	#User log: $ulog"
 echo "	#Network: IP $ip ($mac)"
 echo "	Sudo: $cmds cmd"
-} > >(tee log) 2>&1
-wall log
+} > >(tee log) 2>&1 # {...} > >(tee log) 2>&1 to make output in log file
+wall log # broadcast our system information on all terminals
