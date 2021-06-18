@@ -27,3 +27,6 @@ First off [$ sudo crontab -e] (yep, you need sudo to make cron runnig script as 
 */10 * * * * /path/to/file/monitoring.sh
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Dont forget that you should write FULL PATH TO FILE (no ~/*/etc.) due to cron's pecularity.
+
+# walkthrough37.txt
+Incomplete guide to set up and configure your B2BR machine. 2 b continued.
