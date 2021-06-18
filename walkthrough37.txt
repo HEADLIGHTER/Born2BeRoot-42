@@ -1,4 +1,78 @@
 |******************************************************************************|
 |             Yield not to the light, darkness is your new master.             |
 |******************************************************************************|
+Linux, Debian 64-bit 1gb cre3ate vdf VDI Dynamically allocated 8gb 
+settings -> storage -> IDE -> cd -> debian-xx-x-x-amd64-netinst.iso
+Install (Not Graphical install)
+Chose language (English)
+
+Territory or area: Chose yours. For Moscow campus it's Other -> Europe -> Russian Federation -> Canada (idk, maybe United States is better but i'm not sure about their MM-DD-YYYY and HH:MM AM/PM and how it's going to affect on evaluation. I mean, in script results example from subject we have #Last boot: 2021-04-25 14:45) -> American English keyboard layout. Wait.
+
+Hostname: yourintralogin42 Domain name: leave empty Root password: qwerty123(please no!); Re-enter. Full name: Your full name. Real or intra, doesn't matter. Username: yourintralogin Password: zxc1337 (bruh) Time zone: Your time zone or Moscow for Moscow campus (lol). Wait.
+
+For bonus part:
+Partition method: Manual -> SCSI3 (0,0,0( (sda) -> 8.6 GB ATA HARDDISK -> yes -> pri/log 8.6 GB FREE SPACE -> Create a new partition (CRANP next) -> 500M -> Primary -> Beginning -> Mount point -> Boot -> Done setting up the partition (DSUP) -> pri/log -> CRANP -> 8.1 GB or just type max-> Logical -> mount point -> Do not mount it -> DSUP -> Configure encrypted volumes -> Yes -> Create encrypted volumes -> /dev/sda5 (press space to chose it) -> DSUTP -> Finish -> yes -> Wait.
+
+Enter encryption passphrase twice -> Configure the Logical Volume Manager -> yes -> Create volume group -> LVMGroup -> press pace on /dev/mapper/sda5_crypt, continue -> Create logical volume -> LVMGroup (LVMG next) -> root -> 2G
+Create logical volume (CLV next) -> LVMGroup -> swap -> 1G
+CLV -> LVMGroup -> home -> 1G
+CLV -> LVMGroup -> var -> 1G
+CLV -> LVMGroup -> srv -> 1G
+CLV -> LVMGroup -> tmp -> 1G
+CLV -> LVMGroup -> var-log -> all disk space that left -> Finish
+
+Now u see "[!!] Partition disks" window and a lot of LVM VG LVMGroup LV volumename
+Go to first #1 998.2 MB (under home, volumename #1 for next steps) -> Use as (UA next): -> EXT4 jfl -> Mount point: (MP next) -> /home -> Done setting up the partition (yep, DSUP)
+root #1 -> UA -> ext4 -> MU -> / - the root fs -> DSUP
+srv #1 -> UA -> ext4 -> MU -> /srv -> DSUP
+swap #1 -> UA -> swap area -> DSUP
+tmp #1 -> UA -> ext4 -> MU -> /tmp -> DSUP
+var #1 -> UA -> ext4 -> MU -> /var -> DSUP
+var-log #1 -> UA -> ext4 -> NU -> Enter manually /var/lof -> DSUP
+Scroll below -> Finish partitioning and write changes to disk -> yes
+
+Now chill, you have plenty of time to eat/smoke/stretch your back/go for a walk or do it all while debian is installing.
+
+Scan another CD or DVD? -> no
+Debian archive mirror country -> Russian Federation (i think..... Russkie Vpered!) -> deb.debian.org (doesn't matter) -> leave proxy info field empty and proceed to the next step, the step of configuring apt&installing software process.
+
+Participate in the package usage survey? -> NO!
+
+Soft seclection: remove SSH server & standart system utilities with space(again)
+GRUB - YES! -> /dev/sda
+Installlation complee -> continue
+
+
+Installing sudo & adding user in groups
+1) su -> password -> apt install sudo
+2) adduser username sudo (yep, you should be in root)
+3) sudo reboot
+4) sudo -v -> password
+5) sudo addgroup user42
+6) sudo adduser username user42
+7) sudo apt update
+ 
+Installing SSH
+1) sudo apt install openssh-server
+2) sudo nano /etc/ssh/sshd_config -> change line "#Port 22" to "Port 4242 and "#PermitRootLogin prohibit-password" to "PermitRootLogin no" -> S&E
+3) sudo service ssh status. It's should be active.
+
+Installing UFW
+1) sudo apt install ufw
+2) sudo ufw enable
+3) sudo ufw allow 4242
+4) sudo ufw status. It's should be active with 4242 and 4242(v6) ports allow from anywhere
+
+Configuring sudo
+1) sudo touch /etc/sudoers.d/sudoconfig
+2) sudo mkdir /var/log/sudo (for sudo log files, yes)
+3) sudo nano /etc/sudoers.d/sudoconfig then write next lines in our brand new file:
+************************************************************
+* Defaults      passwd_tries=3                             *
+* Defaults      badpass_message="Incorrect password"       * <- you can set your own message
+* Defaults      log_input,log_output                       *
+* Defaults      iolog_dir="/var/log/sudo                   *
+* Defaults      requiretty                                 * 
+* Defaults      secure_path="that/long/paths/from/subject" *
+************************************************************
 
