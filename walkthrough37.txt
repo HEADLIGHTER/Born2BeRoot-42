@@ -1,14 +1,14 @@
 |******************************************************************************|
 |             Yield not to the light, darkness is your new master.             |
 |******************************************************************************|
-Linux, Debian 64-bit 1gb cre3ate vdf VDI Dynamically allocated 8gb 
+Linux, Debian 64-bit -> 1gb -> create vdf -> VDI -> Dynamically allocated -> 8gb 
 settings -> storage -> IDE -> cd -> debian-xx-x-x-amd64-netinst.iso
 Install (Not Graphical install)
 Chose language (English)
 
 Territory or area: Chose yours. For Moscow campus it's Other -> Europe -> Russian Federation -> Canada (idk, maybe United States is better but i'm not sure about their MM-DD-YYYY and HH:MM AM/PM and how it's going to affect on evaluation. I mean, in script results example from subject we have #Last boot: 2021-04-25 14:45) -> American English keyboard layout. Wait.
 
-Hostname: yourintralogin42 Domain name: leave empty Root password: qwerty123(please no!); Re-enter. Full name: Your full name. Real or intra, doesn't matter. Username: yourintralogin Password: zxc1337 (bruh) Time zone: Your time zone or Moscow for Moscow campus (lol). Wait.
+Hostname: yourintralogin42 Domain name: leave empty Root password: qwerty123(please no!); Re-enter. Full name: Your full name. Real or intra, doesn't matter. Username: yourintralogin Password: zxc1337 (bruh) Time zone: Your time zone or Moscow for Moscow campus (yes). Wait.
 
 For bonus part:
 Partition method: Manual -> SCSI3 (0,0,0( (sda) -> 8.6 GB ATA HARDDISK -> yes -> pri/log 8.6 GB FREE SPACE -> Create a new partition (CRANP next) -> 500M -> Primary -> Beginning -> Mount point -> Boot -> Done setting up the partition (DSUP) -> pri/log -> CRANP -> 8.1 GB or just type max-> Logical -> mount point -> Do not mount it -> DSUP -> Configure encrypted volumes -> Yes -> Create encrypted volumes -> /dev/sda5 (press space to chose it) -> DSUTP -> Finish -> yes -> Wait.
@@ -76,3 +76,4 @@ Configuring sudo
 * Defaults      secure_path="that/long/paths/from/subject" *
 ************************************************************
 
+Setting up a strong password policy
