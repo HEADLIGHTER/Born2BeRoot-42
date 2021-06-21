@@ -40,6 +40,7 @@ Enter encryption passphrase twice -> 8.1G or just max -> Finish partitioning and
 | var-log #1 -> UA -> ext4 -> NU -> Enter manually -> /var/log -> DSUP                                                                                                     |
 | Scroll below -> Finish partitioning and write changes to disk -> yes                                                                                                     |
 \/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
 Now chill, you have plenty of time to eat/smoke/stretch your back/go for a walk or do it all while debian is installing.
 
 Scan another CD or DVD? -> no
