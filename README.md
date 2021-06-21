@@ -30,7 +30,7 @@ Dont forget that you should write FULL PATH TO FILE (no ~/*/etc.) due to cron's 
 
 # walkthrough37.txt
 Guide how to correctly setup and configure both Debian and software. Including bonus-part partition set up.
-# evalnowledge.txt
+# evalknowledge.txt
 Little Q&A from Subject and whattocheck as evaluator.
 
 I hope it's done for now and only thing that left to add is my evaluation result.
