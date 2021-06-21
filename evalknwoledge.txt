@@ -1,0 +1,51 @@
+|****************************************************************************************************************************|
+|                             I often think about the god who blessed us with this cryptic puzzle...                         |
+|****************************************************************************************************************************|
+                                           ##################################
+                                           #    Part one: Evaluation Q&A    #
+                                           ##################################
+Q: Why Debian?
+A: It's easier to install and configure than CentOS
+
+Q: Diff between aptitude and apt?
+A: Aptitude is a high-level package manager while APT is lower-level package manager which can be used by other 
+higher-level package managers
+(read more: https://www.tecmint.com/difference-between-apt-and-aptitude/)
+
+Q: What is AppArmor?
+A: AppArmor ("Application Armor") is a Linux kernel security module that allows the system administrator to restrict programs' 
+capabilities with per-program profiles.
+(read more: https://en.wikipedia.org/wiki/AppArmor)
+
+Q: What is SSH?
+A: SSH, also known as Secure Shell or Secure Socket Shell, is a network protocol that gives users, particularly system 
+administrators, a secure way to access a computer over an unsecured network.
+(read more: https://searchsecurity.techtarget.com/definition/Secure-Shell)
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+| You have to create a new user here.        |
+| $ sudo adduser username                    | <- creating new user (yes (no)) 
+| $ sudo change -l username                  | <- Verify password expire info for new user
+| $ sudo adduser username sudo               |
+| $ sudo adduser username user42             | <- assign new user to sudo and user42 groups
+\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
+Q: How your script works?
+A: ... README.md
+
+                                           ##################################
+                                           #    Part two: What to check?    #
+                                           ##################################
+|***************************************|
+| 1) lsblk                              1 <- Check partitions
+| 2) sudo aa-status                     2 <- AppArmor status
+| 3) getent group sudo                  3 <- sudo group users
+| 4) getent group user42                4 <- user42 group users
+| 5) sudo service ssh status            5 <- ssh status, yep
+| 6) sudo ufw status                    6 <- ufw status
+| 7) ssh username@ipadress -p 4242      7 <- connect to VM from your host (physical) machine via SSH
+| 8) nano /etc/sudoers.d/<filename>     8 <- yes, sudo config file. You can $ ls /etc/sudoers.d first
+| 9) nano /etc/login.defs               9 <- password expire policy
+| 10) nano /etc/pam.d/common-pwquality 10 <- password policy
+| 11) sudo crontab -l                  11 <- cron schedule
+|***************************************|

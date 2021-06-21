@@ -6,9 +6,10 @@ settings -> storage -> IDE -> cd -> debian-xx-x-x-amd64-netinst.iso
 Install (Not Graphical install)
 Choose language (English)
 
-Territory or area: Choose yours. For Moscow campus it's Other -> Europe -> Russian Federation -> Canada (idk, maybe United States is better but i'm not sure about their MM-DD-YYYY and HH:MM AM/PM and how it's going to affect on evaluation. I mean, in script results example from subject we have #Last boot: 2021-04-25 14:45) -> American English keyboard layout. Wait.
+Territory or area: Choose yours. For Me it's Other -> Europe -> Russian Federation -> Canada (lmao) -> American English keyboard layout. Wait.
 
-Hostname: yourintralogin42 -> Domain name: leave empty -> Root password: qwerty123(please no!); Re-enter. Full name: Your full name. Real/intra/else, doesn't matter. Username: yourintralogin Password: zxc1337 (bruh) Time zone: Your time zone or Moscow for Moscow campus (yes). Wait.
+Hostname: yourintralogin42 -> Domain name: leave empty -> Root password: qwerty123(please no!); Re-enter. Full name: Your full name. Real/intra/else, doesn't matter. 
+Username: yourintralogin -> Password: zxc1337 (bruh) -> Time zone: Your time zone or Moscow for Moscow campus (yes). Wait.
 
 For basic part:
 Partition method: Guided - use entire disk and set up encrypted LVM -> SCSI3 (0,0,0) (sda) - 8.6 GB ATA VBOX HARDDISK -> separate /home partition -> yes. Wait.
@@ -50,8 +51,12 @@ Soft seclection: remove SSH server & standart system utilities with space (again
 GRUB - YES! -> /dev/sda
 Installlation complee -> continue
 
+Virtual war machine is ready.
+
 Enter your LVM encryption passphrase, log in into your user. GL HF.
 Now we are going to install necessary software and configure it.
+
+(I prefer Nano over Vi because of syntax highlighting. But these are the weapons of your choice. Feel free to use Vi.)
 
 Installing sudo & adding user in groups
 1) su - -> root password -> apt install sudo
@@ -64,8 +69,10 @@ Installing sudo & adding user in groups
 
 Installing SSH
 1) sudo apt install openssh-server
-2) sudo nano /etc/ssh/sshd_config -> change line "#Port 22" to "Port 4242" and "#PermitRootLogin prohibit-password" to "PermitRootLogin no" -> save and exit (i hope you know how to do it in Nano...)
-3) sudo service ssh status. It's should be active.
+2) sudo nano /etc/ssh/sshd_config -> change line "#Port 22" to "Port 4242" and "#PermitRootLogin prohibit-password" to "PermitRootLogin no" -> save and exit 
+(i hope you know how to do it in Nano...)
+3) sudo nano /etc/ssh/ssh_config -> change line "#Port 22" to "Port 4242"
+4) sudo service ssh status. It's should be active.
 
 Installing UFW
 1) sudo apt install ufw
@@ -101,6 +108,11 @@ PASS_WARN_AGE is 7 by defaults anyway so just ignore it.
 * minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root *
 ****************************************************************************************
 so you should get "password requisite pam_pwqiality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root"
+6) Now you have to change all your passwords according to your new password policy
+***************
+* passwd      * <- change user password
+* sudo passwd * <- change root password
+***************
 
 And after all of this manipulations we finally came for our monitoring.sh script. 
 All guidelines is already exists in README.md file. Theres one more thing to install that already listed in monitroing.sh file:
