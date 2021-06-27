@@ -179,5 +179,9 @@ install that already listed in monitroing.sh file:
 ******************************
 * sudo apt install net-tools *
 ******************************
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!Dont forget to make a clone or snapshot of your VM before evaluation !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 Now you are almost ready for evaluation. You just have to sort out the questions
 listed in subject (or check my evalknowledge.txt file).
