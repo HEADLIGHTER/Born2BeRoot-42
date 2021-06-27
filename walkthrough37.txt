@@ -1,65 +1,110 @@
 |******************************************************************************|
 |             Yield not to the light, darkness is your new master.             |
 |******************************************************************************|
-Linux, Debian 64-bit -> 1gb -> create vdf -> VDI -> Dynamically allocated -> 8gb 
+
+--------------------------------------------------------------------------------
+STEP 1 - VM settings
+--------------------------------------------------------------------------------
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+| Idk about other campuses but in Moscow you can't create your virtual disk in |
+| your user folder. Use other -> goinfre/VirtualBox VMs/ folder as your        |
+| machine folder instead. Please note that goinfre folder is connected to      |
+| certain Mac so you can't just move to other computer and go on!              |
+\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
+Linux, Debian 64-bit -> 1gb -> create vdf -> VDI -> Dynamically allocated -> 8gb
 settings -> storage -> IDE -> cd -> debian-xx-x-x-amd64-netinst.iso
+
+--------------------------------------------------------------------------------
+STEP 2 - Installation
+--------------------------------------------------------------------------------
+
 Install (Not Graphical install)
 Choose language (English)
 
-Territory or area: Choose yours. For Me it's Other -> Europe -> Russian Federation -> Canada (lmao) -> American English keyboard layout. Wait.
+Territory or area: Choose yours. For Me it's Other -> Europe ->
+-> Russian Federation -> Canada (lmao) -> American English keyboard layout. Wait
 
-Hostname: yourintralogin42 -> Domain name: leave empty -> Root password: qwerty123(please no!); Re-enter. Full name: Your full name. Real/intra/else, doesn't matter. 
-Username: yourintralogin -> Password: zxc1337 (bruh) -> Time zone: Your time zone or Moscow for Moscow campus (yes). Wait.
+Hostname: yourintralogin42 -> Domain name: leave empty ->
+-> Root password: qwerty123(please no!); Re-enter. Full name: Your full name.
+Real/intra/else, doesn't matter. Username: yourintralogin ->
+Password: zxc1337 (bruh) -> Time zone: Your time zone or Moscow for Moscow
+campus (yes). Wait.
+
+................................................................................
+substep 2.1 - partition setup
 
 For basic part:
-Partition method: Guided - use entire disk and set up encrypted LVM -> SCSI3 (0,0,0) (sda) - 8.6 GB ATA VBOX HARDDISK -> separate /home partition -> yes. Wait.
-Enter encryption passphrase twice -> 8.1G or just max -> Finish partitioning and write changes to disk -> yes. Wait.
-/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-| For bonus part:                                                                                                                                                          |
-| Partition method: Manual -> SCSI3 (0,0,0( (sda) -> 8.6 GB ATA HARDDISK -> yes -> pri/log 8.6 GB FREE SPACE -> Create a new partition (CRANP next) -> 500M -> Primary ->  |
-|-> Beginning -> Mount point -> Boot -> Done setting up the partition (DSUP) -> pri/log -> CRANP -> 8.1 GB or just type max-> Logical -> mount point -> Do not mount it -> |
-|-> DSUP -> Configure encrypted volumes -> Yes -> Create encrypted volumes -> /dev/sda5 (press space to choose it) -> DSUTP -> Finish -> yes -> Wait.                      |
-|                                                                                                                                                                          |
-| Enter encryption passphrase twice -> Configure the Logical Volume Manager -> yes -> Create volume group -> LVMGroup -> press pace on /dev/mapper/sda5_crypt, continue -> |
-|->Create logical volume -> LVMGroup (LVMG next) -> root -> 2G                                                                                                             |
-| Create logical volume (CLV next) -> LVMGroup -> swap -> 1G                                                                                                               |
-| CLV -> LVMGroup -> home -> 1G                                                                                                                                            |
-| CLV -> LVMGroup -> var -> 1G                                                                                                                                             |
-| CLV -> LVMGroup -> srv -> 1G                                                                                                                                             |
-| CLV -> LVMGroup -> tmp -> 1G                                                                                                                                             |
-| CLV -> LVMGroup -> var-log -> all disk space that left -> Finish                                                                                                         |
-|                                                                                                                                                                          |
-| Now u see "[!!] Partition disks" window and a lot of LVM VG LVMGroup LV volumename                                                                                       |
-| Go to first #1 998.2 MB (under home, volumename #1 for next steps) -> Use as (UA next): -> EXT4 jfl -> Mount point: (MP next) -> /home ->                                |
-|->Done setting up the partition (yep, DSUP)                                                                                                                               |
-| root #1 -> UA -> ext4 -> MU -> / - the root fs -> DSUP                                                                                                                   |
-| srv #1 -> UA -> ext4 -> MU -> /srv -> DSUP                                                                                                                               |
-| swap #1 -> UA -> swap area -> DSUP                                                                                                                                       |
-| tmp #1 -> UA -> ext4 -> MU -> /tmp -> DSUP                                                                                                                               |
-| var #1 -> UA -> ext4 -> MU -> /var -> DSUP                                                                                                                               |
-| var-log #1 -> UA -> ext4 -> NU -> Enter manually -> /var/log -> DSUP                                                                                                     |
-| Scroll below -> Finish partitioning and write changes to disk -> yes                                                                                                     |
-\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+Partition method: Guided - use entire disk and set up encrypted LVM ->
+-> SCSIX (0,0,0) (sda) - 8.6 GB ATA VBOX HARDDISK -> separate /home partition ->
+-> yes. Wait.
+Enter encryption passphrase twice -> 8.1G or just max ->
+-> Finish partitioning and write changes to disk -> yes. Wait.
 
-Now chill, you have plenty of time to eat/smoke/stretch your back/go for a walk or do it all while debian is installing.
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/|
+| For bonus part:                                                              |
+| Partition method: Manual -> SCSIX (0,0,0( (sda) -> 8.6 GB ATA HARDDISK ->    |
+|-> yes -> pri/log 8.6 GB FREE SPACE -> Create a new partition (CRANP next) -> |
+|-> 500M -> Primary -> Beginning -> Mount point -> Boot ->                     |
+|-> Done setting up the partition(DSUP) -> pri/log -> CRANP -> 8.1GB or "max"->|
+|-> Logical -> mount point -> Do not mount it -> DSUP ->                       |
+|-> Configure encrypted volumes -> Yes -> Create encrypted volumes ->          |
+|-> /dev/sda5 (press space to choose it) -> DSUTP -> Finish -> yes -> Wait.    |
+|                                                                              |
+| Enter encryption passphrase twice -> Configure the Logical Volume Manager -> |
+|-> yes -> Create volume groupe -> LVMGroup ->                                 |
+|-> press pace on /dev/mapper/sda5_crypt, continue ->                          |
+|-> Create logical volume(CLV next) -> LVMGroup (LVMG next) -> root -> 2G      |
+| CLV -> LVMG -> swap -> 1G                                                    |
+| CLV -> LVMG -> home -> 1G                                                    |
+| CLV -> LVMG -> var -> 1G                                                     |
+| CLV -> LVMG -> srv -> 1G                                                     |
+| CLV -> LVMG -> tmp -> 1G                                                     |
+| CLV -> LVMG -> var-log -> all disk space that left -> Finish                 |
+|                                                                              |
+| Now u see "[!!] Partition disks" window and a lot of LVM VG LVMGroup LV ...  |
+| Go to first #1 998.2 MB (under home, <volumename> #1 for next steps) ->      |
+|-> Use as (UA next): -> EXT4 jfl -> Mount point: (MP next) -> /home ->        |
+|-> Done setting up the partition (yep, DSUP)                                  |
+| root #1 -> UA -> ext4 -> MU -> / - the root fs -> DSUP                       |
+| srv #1 -> UA -> ext4 -> MU -> /srv -> DSUP                                   |
+| swap #1 -> UA -> swap area -> DSUP                                           |
+| tmp #1 -> UA -> ext4 -> MU -> /tmp -> DSUP                                   |
+| var #1 -> UA -> ext4 -> MU -> /var -> DSUP                                   |
+| var-log #1 -> UA -> ext4 -> MU -> Enter manually -> /var/log -> DSUP         |
+| Scroll below -> Finish partitioning and write changes to disk -> yes         |
+\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
+Now chill, you have plenty of time to stretch your back while debian is
+installing.
+................................................................................
 
 Scan another CD or DVD? -> no
-Debian archive mirror country -> your nearest mirror or Russian Federation for Moscow campus -> deb.debian.org (doesn't matter) -> leave proxy info field empty and proceed.
+Debian archive mirror country -> your nearest mirror or Russian Federation for
+Moscow campus -> deb.debian.org (doesn't matter) ->
+-> leave proxy info field empty and proceed.
 
 Participate in the package usage survey? -> NO!
 
-Soft seclection: remove SSH server & standart system utilities with space (again)
+Soft seclection: remove SSH server & standart system utilities with space(again)
 GRUB - YES! -> /dev/sda
 Installlation complee -> continue
 
 Virtual war machine is ready.
 
+--------------------------------------------------------------------------------
+STEP 3 - Configure your machine
+--------------------------------------------------------------------------------
+
 Enter your LVM encryption passphrase, log in into your user. GL HF.
 Now we are going to install necessary software and configure it.
 
-(I prefer Nano over Vi because of syntax highlighting. But these are the weapons of your choice. Feel free to use Vi.)
+(I prefer Nano over Vi because of syntax highlighting.
+But these are the weapons of your choice. Feel free to use Vi.)
+................................................................................
+substep 3.1 - Installing sudo & adding user in groups
 
-Installing sudo & adding user in groups
 1) su - -> root password -> apt install sudo
 2) adduser yourusername sudo (yep, you should be in root)
 3) sudo reboot, then log in again
@@ -67,57 +112,72 @@ Installing sudo & adding user in groups
 5) sudo addgroup user42
 6) sudo adduser yourusername user42
 7) sudo apt update
+................................................................................
+................................................................................
+substep 3.2 - Installing SSH
 
-Installing SSH
 1) sudo apt install openssh-server
-2) sudo nano /etc/ssh/sshd_config -> change line "#Port 22" to "Port 4242" and "#PermitRootLogin prohibit-password" to "PermitRootLogin no" -> save and exit 
+2) sudo nano /etc/ssh/sshd_config -> change line "#Port 22" to "Port 4242" and
+"#PermitRootLogin prohibit-password" to "PermitRootLogin no" -> save and exit
 (i hope you know how to do it in Nano...)
 3) sudo nano /etc/ssh/ssh_config -> change line "#Port 22" to "Port 4242"
 4) sudo service ssh status. It's should be active.
+................................................................................
+................................................................................
+substep 3.3 - Installing UFW
 
-Installing UFW
 1) sudo apt install ufw
 2) sudo ufw enable
 3) sudo ufw allow 4242
-4) sudo ufw status. It's should be active with 4242 and 4242(v6) ports allow from anywhere
+4) sudo ufw status. It's should be active with 4242 and 4242(v6) ports allow
+from anywhere
+................................................................................
+................................................................................
+substep 3.4 - Configuring sudo
 
-Configuring sudo
 1) sudo touch /etc/sudoers.d/sudoconfig
 2) sudo mkdir /var/log/sudo (for sudo log files, yes)
-3) sudo nano /etc/sudoers.d/sudoconfig then write next lines in our brand new file:
+3) sudo nano /etc/sudoers.d/sudoconfig then write next lines in our new file:
 ************************************************************
 * Defaults      passwd_tries=3                             *
-* Defaults      badpass_message="Incorrect password"       * <- you can set your own
-* Defaults      log_input,log_output                       *    message here
+* Defaults      badpass_message="Incorrect password"       * <- you can set your
+* Defaults      log_input,log_output                       *    own message here
 * Defaults      iolog_dir="/var/log/sudo"                  *
 * Defaults      requiretty                                 *
 * Defaults      secure_path="that/long/paths/from/subject" *
 ************************************************************
+................................................................................
+................................................................................
+substep 3.5 - Setting up a strong password policy
 
-Setting up a strong password policy
 1) sudo nano /etc/login.defs
 2) replace next lines:
 *************************************************
-* PASS_MAX_DAYS    99999 -> PASS_MAX_DAYS    30 * <- line 160; you can easly reach
-* PASS_MIN_DAYS    0     -> PASS_MIN_DAYS    2  *    it with ctrl+_ in nano
-*************************************************
+* PASS_MAX_DAYS    99999 -> PASS_MAX_DAYS    30 * <- line 160 you can easly
+* PASS_MIN_DAYS    0     -> PASS_MIN_DAYS    2  *    reach it with ctrl+_ in
+*************************************************    nano
 PASS_WARN_AGE is 7 by defaults anyway so just ignore it.
 3) sudo apt install libpam-pwquality
 4) sudo nano /etc/pam.d/common-password
-5) Add to the end of the "password requisite pam_pwqiality.so retry=3" line next parameters
+5) Add to the end of the "password requisite pam_pwqiality.so retry=3" line next
+parameters
 ****************************************************************************************
 * minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root *
 ****************************************************************************************
 so you should get "password requisite pam_pwqiality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root"
-6) Now you have to change all your passwords according to your new password policy
+6) Now you have to change all your passwords according to your new password
+policy
 ***************
 * passwd      * <- change user password
 * sudo passwd * <- change root password
 ***************
+................................................................................
 
-And after all of this manipulations we finally came for our monitoring.sh script. 
-All guidelines is already exists in README.md file. Theres one more thing to install that already listed in monitroing.sh file:
+And after all of this manipulations we finally came for our monitoring.sh script
+All guidelines is already exists in README.md file. Theres one more thing to
+install that already listed in monitroing.sh file:
 ******************************
 * sudo apt install net-tools *
 ******************************
-Now you are almost ready for evaluation. You just have to sort out the questions listed in subject.
+Now you are almost ready for evaluation. You just have to sort out the questions
+listed in subject (or check my evalknowledge.txt file).

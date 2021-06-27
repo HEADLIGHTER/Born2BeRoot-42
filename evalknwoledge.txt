@@ -13,7 +13,7 @@ higher-level package managers
 (read more: https://www.tecmint.com/difference-between-apt-and-aptitude/)
 
 Q: What is AppArmor?
-A: AppArmor ("Application Armor") is a Linux kernel security module that allows the system administrator to restrict programs' 
+A: AppArmor ("Application Armor") is a Linux kernel security module that allows the system administrator to restrict programs'
 capabilities with per-program profiles.
 (read more: https://en.wikipedia.org/wiki/AppArmor)
 

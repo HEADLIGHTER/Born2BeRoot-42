@@ -1,0 +1,31 @@
+|******************************************************************************|
+|                     Nightcrawler - Enfer (Feat. Celine)                      |
+|******************************************************************************|
+
+I don't think that spendig so many time to just fix @reboot is OK. So, theres
+another way to make it work. Still, it won't works too sometimes. Idk what to
+do, keep tring to figure it out.
+
+1) $ cd /etc/systemd/system
+2) $ sudo touch monitoringsh.service
+3) $ sudo nano monitoringsh.service
+4) Type next lines in our file:
+*****************************************
+* [Unit]                                *
+* Description=monitoring.sh             *
+*                                       *
+* [Service]                             *
+* Type=oneshot                          *
+* ExecStart=/path/to/your/monitoring.sh *
+*                                       *
+* [Install]                             *
+* WantedBy=multi-user.target            *
+*****************************************
+S&E
+5) su -
+6) chmod 664 monitoringsh.service
+6) systemctl daemon-reload
+7) systemctl enable monitoringsh.service
+You should get "Created symlink from ..." message
+8) systemctl start monitoringsh.service
+
