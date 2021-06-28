@@ -1,7 +1,7 @@
 
 # Born2BeRoot 42/21
 
-#GRADE: 105/100 
+# GRADE: 105/100 
 If you make only partition from bonus part.
 
 Developed for Debian so i'm not sure that it will run properly on CentOS distributive. Anyway, PM me on Discord if its working on CentOS or you have a suggestion/issues: MMBHWR#0793
