@@ -138,6 +138,7 @@ substep 3.4 - Configuring sudo
 1) sudo touch /etc/sudoers.d/sudoconfig
 2) sudo mkdir /var/log/sudo (for sudo log files, yes)
 3) sudo nano /etc/sudoers.d/sudoconfig then write next lines in our new file:
+
 ************************************************************
 * Defaults      passwd_tries=3                             *
 * Defaults      badpass_message="Incorrect password"       * <- you can set your
@@ -146,25 +147,32 @@ substep 3.4 - Configuring sudo
 * Defaults      requiretty                                 *
 * Defaults      secure_path="that/long/paths/from/subject" *
 ************************************************************
+
 ................................................................................
 ................................................................................
 substep 3.5 - Setting up a strong password policy
 
 1) sudo nano /etc/login.defs
 2) replace next lines:
+
 *************************************************
 * PASS_MAX_DAYS    99999 -> PASS_MAX_DAYS    30 * <- line 160 you can easly
 * PASS_MIN_DAYS    0     -> PASS_MIN_DAYS    2  *    reach it with ctrl+_ in
 *************************************************    nano
+
 PASS_WARN_AGE is 7 by defaults anyway so just ignore it.
 3) sudo apt install libpam-pwquality
 4) sudo nano /etc/pam.d/common-password
 5) Add to the end of the "password requisite pam_pwqiality.so retry=3" line next
 parameters
+
 ****************************************************************************************
 * minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root *
 ****************************************************************************************
-so you should get "password requisite pam_pwqiality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root"
+
+You should get_next_line(ha-ha):
+"password requisite pam_pwqiality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root"
+
 6) Now you have to change all your passwords according to your new password
 policy
 ***************
@@ -173,15 +181,36 @@ policy
 ***************
 ................................................................................
 
+--------------------------------------------------------------------------------
+STEP 4 - Network adapter configuration
+--------------------------------------------------------------------------------
+
+You may not be able to connect to your VM via SSH with standard settings in
+VirtualBox. Theres a one little thing to fix  it!
+1) Turn off your VM
+2) Go to your VM settings in VirtualBox
+3) Network -> Adapter 1 -> Attached to: NAT
+4) Swap NAT to Bridget Adapter
+5) Run your VM and type [hostname -I](not hostname -i, pls) after logging in
+6) In your host (physical) machine open Terminal and run
+[ssh <vmusername>@<ip.from.hostname.-I -p 4242]
+Now you can control your virtual machine from the host terminal.
+
+---------------------------------------------------------------------------------
+CONCLUSION
+---------------------------------------------------------------------------------
+
 And after all of this manipulations we finally came for our monitoring.sh script
 All guidelines is already exists in README.md file. Theres one more thing to
 install that already listed in monitroing.sh file:
+
 ******************************
 * sudo apt install net-tools *
 ******************************
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!Dont forget to make a clone or snapshot of your VM before evaluation !
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Dont forget to make a clone or snapshot of your VM before evaluation !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 Now you are almost ready for evaluation. You just have to sort out the questions
 listed in subject (or check my evalknowledge.txt file).

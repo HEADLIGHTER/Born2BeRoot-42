@@ -4,8 +4,23 @@
                                            ##################################
                                            #    Part one: Evaluation Q&A    #
                                            ##################################
+!GOOGLE IT IF YOU WANT MORE!
+
 Q: Why Debian?
-A: It's easier to install and configure than CentOS
+A: It's easier to install and configure than CentOS (and i haven't use CentOS befoe)
+
+Q: What is virtual machine?
+A: A Virtual Machine (VM) is a compute resource that uses software instead of a physical computer to run programs and deploy 
+apps. Each virtual machine runs its own operating system and functions separately from the other VMs, even when they are all
+running on the same host. For example, you can run a virtual MacOS machine on a physical PC. 
+
+Q: What it's purpose?
+A: VMs may be deployed to accommodate different levels of processing power needs, to run software that requires a different
+operating system, or to test applications in a safe, sandboxed environment. 
+
+Q: How does it works?
+A: VM working through "Virtualization" technology. Virtualization uses software to simulate virtual hardware that allows 
+VMs to run on a single host machine.
 
 Q: Diff between aptitude and apt?
 A: Aptitude is a high-level package manager while APT is lower-level package manager which can be used by other 
