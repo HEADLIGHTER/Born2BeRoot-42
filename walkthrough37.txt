@@ -186,14 +186,35 @@ STEP 4 - Network adapter configuration
 --------------------------------------------------------------------------------
 
 You may not be able to connect to your VM via SSH with standard settings in
-VirtualBox. Theres a one little thing to fix  it!
+VirtualBox. Theres a few ways to wix it!
+................................................................................
+4.1 - The first way
+................................................................................
+
 1) Turn off your VM
 2) Go to your VM settings in VirtualBox
 3) Network -> Adapter 1 -> Attached to: NAT
 4) Swap NAT to Bridget Adapter
 5) Run your VM and type [hostname -I](not hostname -i, pls) after logging in
 6) In your host (physical) machine open Terminal and run
-[ssh <vmusername>@<ip.from.hostname.-I -p 4242]
+[ssh <vmusername>@<ip.from.hostname.-I> -p 4242]
+.................................................................................
+4.2 - Second way
+.................................................................................
+
+1) Turn off your VM
+2) Go to your VM settings in VirtualBox
+3) Network -> Adapter 1 -> Advanced -> Port forwarding
+4)Add new rule (little green button on left top side) and next parameters:
+
+**************************************************************************
+* Protocol       Host IP       Host Port       Guest IP       Guest Port *
+* TCP            127.0.0.1     4242            10.0.2.15      4242       *
+**************************************************************************
+6) In your host (physical) machine open Terminal and run
+[ssh <vmusername>@10.0.2.15 -p 4242]
+.................................................................................
+
 Now you can control your virtual machine from the host terminal.
 
 ---------------------------------------------------------------------------------
