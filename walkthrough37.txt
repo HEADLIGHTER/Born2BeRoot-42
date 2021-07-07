@@ -100,8 +100,11 @@ STEP 3 - Configure your machine
 Enter your LVM encryption passphrase, log in into your user. GL HF.
 Now we are going to install necessary software and configure it.
 
-(I prefer Nano over Vi because of syntax highlighting.
-But these are the weapons of your choice. Feel free to use Vi.)
+##################################################################
+# I prefer Nano over Vi because of syntax highlighting.          #
+# But these are the weapons of your choice. Feel free to use Vi. #
+##################################################################
+
 ................................................................................
 substep 3.1 - Installing sudo & adding user in groups
 
