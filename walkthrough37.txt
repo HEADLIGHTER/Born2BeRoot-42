@@ -202,6 +202,8 @@ VirtualBox. Theres a few ways to wix it!
 4.2 - Second way
 .................................................................................
 
+If the previous method didn't work.
+
 1) Turn off your VM
 2) Go to your VM settings in VirtualBox
 3) Network -> Adapter 1 -> Advanced -> Port forwarding
@@ -212,7 +214,7 @@ VirtualBox. Theres a few ways to wix it!
 * TCP            127.0.0.1     4242            10.0.2.15      4242       *
 **************************************************************************
 6) In your host (physical) machine open Terminal and run
-[ssh <vmusername>@10.0.2.15 -p 4242]
+[ssh <vmusername>@localhost -p 4242]
 .................................................................................
 
 Now you can control your virtual machine from the host terminal.
