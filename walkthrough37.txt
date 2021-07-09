@@ -14,7 +14,8 @@ STEP 1 - VM settings
 \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
 Linux, Debian 64-bit -> 1gb -> create vdf -> VDI -> Dynamically allocated -> 8gb
-settings -> storage -> IDE -> cd -> debian-xx-x-x-amd64-netinst.iso
+
+Settings -> storage -> IDE -> cd -> debian-xx-x-x-amd64-netinst.iso
 
 --------------------------------------------------------------------------------
 STEP 2 - Installation
@@ -109,38 +110,38 @@ Now we are going to install necessary software and configure it.
 substep 3.1 - Installing sudo & adding user in groups
 
 1) su - -> root password -> apt install sudo
-2) adduser yourusername sudo (yep, you should be in root)
-3) sudo reboot, then log in again
-4) sudo -v -> password
-5) sudo addgroup user42
-6) sudo adduser yourusername user42
-7) sudo apt update
+2) [$ adduser <yourusername> sudo] (yep, you should be in root)
+3) [$ sudo reboot], then log in again
+4) [$ sudo -v] -> password
+5) [$ sudo addgroup user42]
+6) [$ sudo adduser yourusername user42]
+7) [$ sudo apt update]
 ................................................................................
 ................................................................................
 substep 3.2 - Installing SSH
 
-1) sudo apt install openssh-server
-2) sudo nano /etc/ssh/sshd_config -> change line "#Port 22" to "Port 4242" and
+1) [$ sudo apt install openssh-server]
+2) [$ sudo nano /etc/ssh/sshd_config] -> change line "#Port 22" to "Port 4242" and
 "#PermitRootLogin prohibit-password" to "PermitRootLogin no" -> save and exit
 (i hope you know how to do it in Nano...)
-3) sudo nano /etc/ssh/ssh_config -> change line "#Port 22" to "Port 4242"
-4) sudo service ssh status. It's should be active.
+3) [$ sudo nano /etc/ssh/ssh_config] -> change line "#Port 22" to "Port 4242"
+4) [$ sudo service ssh status]. It's should be active.
 ................................................................................
 ................................................................................
 substep 3.3 - Installing UFW
 
-1) sudo apt install ufw
-2) sudo ufw enable
-3) sudo ufw allow 4242
-4) sudo ufw status. It's should be active with 4242 and 4242(v6) ports allow
+1) [$ sudo apt install ufw]
+2) [$ sudo ufw enable]
+3) [$ sudo ufw allow 4242]
+4) [$ sudo ufw status]. It's should be active with 4242 and 4242(v6) ports allow
 from anywhere
 ................................................................................
 ................................................................................
 substep 3.4 - Configuring sudo
 
-1) sudo touch /etc/sudoers.d/sudoconfig
-2) sudo mkdir /var/log/sudo (for sudo log files, yes)
-3) sudo nano /etc/sudoers.d/sudoconfig then write next lines in our new file:
+1) [$ sudo touch /etc/sudoers.d/sudoconfig]
+2) [$ sudo mkdir /var/log/sudo] (for sudo log files, yes)
+3) [$ sudo nano /etc/sudoers.d/sudoconfig] then write next lines in our new file:
 
 ************************************************************
 * Defaults      passwd_tries=3                             *
@@ -155,7 +156,7 @@ substep 3.4 - Configuring sudo
 ................................................................................
 substep 3.5 - Setting up a strong password policy
 
-1) sudo nano /etc/login.defs
+1) [$ sudo nano /etc/login.defs]
 2) replace next lines:
 
 *************************************************
@@ -164,8 +165,8 @@ substep 3.5 - Setting up a strong password policy
 *************************************************    nano
 
 PASS_WARN_AGE is 7 by defaults anyway so just ignore it.
-3) sudo apt install libpam-pwquality
-4) sudo nano /etc/pam.d/common-password
+3) [$ sudo apt install libpam-pwquality]
+4) [$ sudo nano /etc/pam.d/common-password]
 5) Add to the end of the "password requisite pam_pwqiality.so retry=3" line next
 parameters
 
@@ -179,8 +180,8 @@ You should get_next_line(ha-ha):
 6) Now you have to change all your passwords according to your new password
 policy
 ***************
-* passwd      * <- change user password
-* sudo passwd * <- change root password
+* [$ passwd]      * <- change user password
+* [$ sudo passwd] * <- change root password
 ***************
 ................................................................................
 
@@ -189,28 +190,12 @@ STEP 4 - Network adapter configuration
 --------------------------------------------------------------------------------
 
 You may not be able to connect to your VM via SSH with standard settings in
-VirtualBox. Theres a few ways to wix it!
-................................................................................
-4.1 - The first way
-................................................................................
-
-1) Turn off your VM
-2) Go to your VM settings in VirtualBox
-3) Network -> Adapter 1 -> Attached to: NAT
-4) Swap NAT to Bridget Adapter
-5) Run your VM and type [hostname -I](not hostname -i, pls) after logging in
-6) In your host (physical) machine open Terminal and run
-[ssh <vmusername>@<ip.from.hostname.-I> -p 4242]
-.................................................................................
-4.2 - Second way
-.................................................................................
-
-If the previous method didn't work.
+VirtualBox. Theres a way to wix it!
 
 1) Turn off your VM
 2) Go to your VM settings in VirtualBox
 3) Network -> Adapter 1 -> Advanced -> Port forwarding
-4)Add new rule (little green button on left top side) and next parameters:
+4)Add new rule (little green button on right top side) and next parameters:
 
 **************************************************************************
 * Protocol       Host IP       Host Port       Guest IP       Guest Port *
@@ -218,7 +203,6 @@ If the previous method didn't work.
 **************************************************************************
 6) In your host (physical) machine open Terminal and run
 [ssh <vmusername>@localhost -p 4242]
-.................................................................................
 
 Now you can control your virtual machine from the host terminal.
 
@@ -230,9 +214,9 @@ And after all of this manipulations we finally came for our monitoring.sh script
 All guidelines is already exists in README.md file. Theres one more thing to
 install that already listed in monitroing.sh file:
 
-******************************
-* sudo apt install net-tools *
-******************************
+**********************************
+* [$ sudo apt install net-tools] *
+**********************************
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Dont forget to make a clone or snapshot of your VM before evaluation !
