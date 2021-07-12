@@ -40,7 +40,7 @@ administrators, a secure way to access a computer over an unsecured network.
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 | You have to create a new user here.        |
 | $ sudo adduser username                    | <- creating new user (yes (no))
-| $ sudo chage -l username                  | <- Verify password expire info for new user
+| $ sudo chage -l username                   | <- Verify password expire info for new user
 | $ sudo adduser username sudo               |
 | $ sudo adduser username user42             | <- assign new user to sudo and user42 groups
 \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
