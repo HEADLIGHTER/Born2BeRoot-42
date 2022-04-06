@@ -1,6 +1,16 @@
 |******************************************************************************|
 |             Yield not to the light, darkness is your new master.             |
 |******************************************************************************|
+--------------------------------------------------------------------------------
+STEP 0 - Download
+--------------------------------------------------------------------------------
+
+********************************************************************************
+********Small Netinstaller - https://www.debian.org/CD/netinst/ |<-amd64********
+********************************************************************************
+
+Or that latest stable release that you've already downloaded.
+
 
 --------------------------------------------------------------------------------
 STEP 1 - VM settings
@@ -13,9 +23,16 @@ STEP 1 - VM settings
 | certain Mac so you can't just move to other computer and go on!              |
 \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
-Linux, Debian 64-bit -> 1gb -> create vdf -> VDI -> Dynamically allocated -> 8gb
+VirtualBox -> New
+Name - Anything at your choice
+Machine Folder -> goinfre/VirtualBox VMs/ || Any location
+Type: Linux
+Version: Debian 64-bit
+Continue -> RAM 1024 MB -> Continue ->  Create a virtual hard disk now -> VDI ->
+-> Fixed size -> 8gb
 
-Settings -> storage -> IDE -> cd -> debian-xx-x-x-amd64-netinst.iso
+Settings -> Storage -> Controller: IDE -> Optical Drive: disk icon ->
+-> Choose a disk file -> your debian-xx-x-x-amd64-netinst.iso -> Ok -> Start ->
 
 --------------------------------------------------------------------------------
 STEP 2 - Installation
@@ -37,13 +54,13 @@ campus (yes). Wait.
 substep 2.1 - partition setup
 
 For basic part:
-Partition method: Guided - use entire disk and set up encrypted LVM ->
+Partition method: Guided - Use entire disk and set up encrypted LVM ->
 -> SCSIX (0,0,0) (sda) - 8.6 GB ATA VBOX HARDDISK -> separate /home partition ->
 -> yes. Wait.
 Enter encryption passphrase twice -> 8.1G or just max ->
 -> Finish partitioning and write changes to disk -> yes. Wait.
 
-/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/|
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 | For bonus part:                                                              |
 | Partition method: Manual -> SCSIX (0,0,0( (sda) -> 8.6 GB ATA HARDDISK ->    |
 |-> yes -> pri/log 8.6 GB FREE SPACE -> Create a new partition (CRANP next) -> |
@@ -81,14 +98,14 @@ Now chill, you have plenty of time to stretch your back while debian is
 installing.
 ................................................................................
 
-Scan another CD or DVD? -> no
+[!] Configure the package manager -> no
 Debian archive mirror country -> your nearest mirror or Russian Federation for
 Moscow campus -> deb.debian.org (doesn't matter) ->
 -> leave proxy info field empty and proceed.
 
 Participate in the package usage survey? -> NO!
 
-Soft seclection: remove SSH server & standart system utilities with space(again)
+Soft seclection: remove stars from ssh/standart system utilities/etc. (space)
 GRUB - YES! -> /dev/sda
 Installlation complee -> continue
 
@@ -179,10 +196,10 @@ You should get_next_line(ha-ha):
 
 6) Now you have to change all your passwords according to your new password
 policy
-***************
+*******************
 * [$ passwd]      * <- change user password
 * [$ sudo passwd] * <- change root password
-***************
+*******************
 ................................................................................
 
 --------------------------------------------------------------------------------
@@ -192,7 +209,7 @@ STEP 4 - Network adapter configuration
 You may not be able to connect to your VM via SSH with standard settings in
 VirtualBox. Theres a way to wix it!
 
-1) Turn off your VM
+1) Turn off your VM ([sudo shutdown])
 2) Go to your VM settings in VirtualBox
 3) Network -> Adapter 1 -> Advanced -> Port forwarding
 4)Add new rule (little green button on right top side) and next parameters:
@@ -206,9 +223,9 @@ VirtualBox. Theres a way to wix it!
 
 Now you can control your virtual machine from the host terminal.
 
----------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 CONCLUSION
----------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 And after all of this manipulations we finally came for our monitoring.sh script
 All guidelines is already exists in README.md file. Theres one more thing to
