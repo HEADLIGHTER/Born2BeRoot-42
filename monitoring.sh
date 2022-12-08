@@ -13,7 +13,7 @@ lb=$(who -b | awk '$1 == "system" {print $3 " " $4}')
 lvmt=$(lsblk | grep "lvm" | wc -l)
 lvmu=$(if [ $lvmt -eq 0 ]; then echo no; else echo yes; fi)
 #You need to install net tools for the next step [$ sudo apt install net-tools]
-ctcp=$(cat /proc/net/sockstat{,6} | awk '$1 == "TCP:" {print $3}')
+ctcp=$(ss -t state established | grep -v 'Recv-Q' | wc -l)
 ulog=$(users | wc -w)
 ip=$(hostname -I)
 mac=$(ip link show | awk '$1 == "link/ether" {print $2}')
