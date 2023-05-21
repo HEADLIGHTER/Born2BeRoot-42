@@ -85,12 +85,12 @@ Enter encryption passphrase twice -> 8.1G or just max ->
 | Go to first #1 998.2 MB (under home, <volumename> #1 for next steps) ->      |
 |-> Use as (UA next): -> EXT4 jfl -> Mount point: (MP next) -> /home ->        |
 |-> Done setting up the partition (yep, DSUP)                                  |
-| root #1 -> UA -> ext4 -> MU -> / - the root fs -> DSUP                       |
-| srv #1 -> UA -> ext4 -> MU -> /srv -> DSUP                                   |
+| root #1 -> UA -> ext4 -> MP -> / - the root fs -> DSUP                       |
+| srv #1 -> UA -> ext4 -> MP -> /srv -> DSUP                                   |
 | swap #1 -> UA -> swap area -> DSUP                                           |
-| tmp #1 -> UA -> ext4 -> MU -> /tmp -> DSUP                                   |
-| var #1 -> UA -> ext4 -> MU -> /var -> DSUP                                   |
-| var-log #1 -> UA -> ext4 -> MU -> Enter manually -> /var/log -> DSUP         |
+| tmp #1 -> UA -> ext4 -> MP -> /tmp -> DSUP                                   |
+| var #1 -> UA -> ext4 -> MP -> /var -> DSUP                                   |
+| var-log #1 -> UA -> ext4 -> MP -> Enter manually -> /var/log -> DSUP         |
 | Scroll below -> Finish partitioning and write changes to disk -> yes         |
 \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
